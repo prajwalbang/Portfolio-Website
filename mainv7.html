@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prajwal - Data Analyst Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --accent: #00ff88;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a2a;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-card: #fafafa;
+            --accent: #00cc6a;
+            --text-primary: #0a0a0a;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+        }
+
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="light"] nav {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .theme-toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .theme-toggle.active .theme-toggle-slider {
+            transform: translateX(30px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        [data-theme="light"] .profile-pic {
+            box-shadow: 0 10px 40px rgba(0, 204, 106, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="light"] .hero h1 {
+            background: linear-gradient(135deg, #0a0a0a 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        [data-theme="light"] .btn-primary {
+            color: #ffffff;
+        }
+
+        [data-theme="light"] .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(0, 204, 106, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Stats Grid */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Bento Grid Projects */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        [data-theme="light"] .project-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 204, 106, 0.15);
+        }
+
+        .project-card.featured {
+            grid-column: span 2;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            padding: 0.3rem 0.8rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        [data-theme="light"] .project-link:hover {
+            color: #ffffff;
+        }
+
+        .project-media {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .project-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .project-media iframe {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .project-card.featured .project-media iframe {
+            height: 280px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: var(--bg-secondary);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #00cc6a);
+            border-radius: 3px;
+            transition: width 1s ease;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Interests Section */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .interest-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .interest-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .interest-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .interest-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .interest-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-right {
+                justify-content: flex-end;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .project-card.featured {
+                grid-column: span 1;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Prajwal</div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#interests">Interests</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="theme-toggle-slider">🌙</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <img src="https://raw.githubusercontent.com/prajwalbang/Portfolio-Website/main/newone%20Copy.JPG" alt="Prajwal Profile Picture" class="profile-pic">
+                <h1>Business Analyst turning insights into impact</h1>
+                <p class="subtitle">MSBA @ Northeastern | Graduating December 2025 | Building dashboards, automating workflows, and using data analysis for implementing effective business strategies</p>
+                
+                <div class="cta-buttons">
+                    <a href="#experience" class="btn btn-primary">View Experience</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">WTA</div>
+                        <div class="stat-label">Women's Tennis Association</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">FPU</div>
+                        <div class="stat-label">Franklin Pierce University</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 1.8rem;">Zero2One AI</div>
+                        <div class="stat-label">Netherlands Startup</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3.78</div>
+                        <div class="stat-label">GPA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2025 - Present</div>
+                        <h3 class="timeline-title">Data Analyst</h3>
+                        <p class="timeline-company">
+                            Women's Tennis Association (WTA) - Capstone Project
+                            <img src="https://photoresources.wtatennis.com/wta/photo/2025/02/27/0f7d3973-358d-47c0-a3f0-7d3f76f26a13/Frame-1-1-2.png" alt="WTA" style="height: 20px; vertical-align: middle; margin-left: 8px;">
+                        </p>
+                        <p class="project-description">
+                            Collaborating with the WTA to develop innovative player performance metrics beyond traditional statistics, creating marketable categories like "power hitter" and "comeback player" for enhanced fan engagement. Analyzing multi-year season-by-season WTA match data to derive composite statistical measures that characterize distinctive playing styles, developing formalized stat categories with clear formulas for consistent cross-season analysis.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.wtatennis.com/" class="project-link" target="_blank" rel="noopener noreferrer">
+                                🎾 WTA Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2025 - Aug 2025</div>
+                        <h3 class="timeline-title">Data Analyst Intern</h3>
+                        <p class="timeline-company">
+                            Franklin Pierce University
+                            <img src="https://media.licdn.com/dms/image/v2/D4E0BAQGH1eu4NKioFg/company-logo_200_200/company-logo_200_200/0/1688387634271/franklin_pierce_university_logo?e=1762387200&v=beta&t=zX7yqwS0KNSWYXXaaDGD1OthvI9RAVSgfy4EmqiUago" alt="FPU" style="height: 20px; vertical-align: middle; margin-left: 8px;">
+                        </p>
+                        <p class="project-description">
+                            Building market intelligence datasets for 50+ universities and developing Power BI dashboards for enrollment insights. Creating ETL pipelines and star schema designs for data warehousing. Automated event request processing from MS Forms using Power Automate to route requests across 5+ departments with automated email notifications, replacing manual triage with rule-based routing per service selections.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://franklinpierce.edu/student-experience/campus-life/schedulingfacilitiesevents.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                                🏫 Event Portal
+                            </a>
+                            <a href="https://www.linkedin.com/school/franklin-pierce-university/posts/?feedView=all" class="project-link" target="_blank" rel="noopener noreferrer">
+                                💼 LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2025 - Present</div>
+                        <h3 class="timeline-title">AI Testing & Analytics Intern</h3>
+                        <p class="timeline-company">
+                            Zeroto1 - Netherlands Based Startup
+                            <img src="https://media.licdn.com/dms/image/v2/D4E3DAQEaJOhrHkl4Gw/image-scale_191_1128/image-scale_191_1128/0/1718661013536/zero_to_1_product_tech_cover?e=1760299200&v=beta&t=nnDmwrxylNywZ9S0s8KqyJfbO7n-cAxALkzw2PfGqI0" alt="Zeroto1" style="height: 20px; vertical-align: middle; margin-left: 8px;">
+                        </p>
+                        <p class="project-description">
+                            Testing and evaluating Zeroto1 AI agents performance against alternative analytical methods including ChatGPT(Other LLMs), manual Python coding, Excel analysis, and BI tools to validate strategic insights generation and its performance, results. Creating comprehensive documentation and data storytelling narratives that translate analytical findings into actionable business recommendations.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.zeroto1.ai/" class="project-link" target="_blank" rel="noopener noreferrer">
+                                🌐 Website
+                            </a>
+                            <a href="https://www.linkedin.com/company/zero-to-1-product-tech/about/" class="project-link" target="_blank" rel="noopener noreferrer">
+                                💼 LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sept 2024 - Dec 2025</div>
+                        <h3 class="timeline-title">MSBA Student</h3>
+                        <p class="timeline-company">
+                            Northeastern University
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTraMwTjbvMX6MeBguxfIIgxW9ztKzlmKW-TA&s" alt="Northeastern" style="height: 20px; vertical-align: middle; margin-left: 8px;">
+                        </p>
+                        <p class="project-description">
+                            GPA: 3.78 | Leading WTA Tennis Analytics capstone project. Graduating December 2025 with specialization in data analysis and business intelligence.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://damore-mckim.northeastern.edu/programs/ms-business-analytics/" class="project-link" target="_blank" rel="noopener noreferrer">
+                                🎓 MSBA Program
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Previous</div>
+                        <h3 class="timeline-title">SDE Intern</h3>
+                        <p class="timeline-company">
+                            Nirmitee.io
+                            <img src="https://nirmitee.io/wp-content/uploads/2024/12/logo-white.svg" alt="Nirmitee" style="height: 20px; vertical-align: middle; margin-left: 8px;">
+                        </p>
+                        <p class="project-description">
+                            Software development internship working on scalable backend systems and production applications.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://nirmitee.io/" class="project-link" target="_blank" rel="noopener noreferrer">
+                                🌐 Website
+                            </a>
+                            <a href="https://www.linkedin.com/company/nirmitee/posts/?feedView=all" class="project-link" target="_blank" rel="noopener noreferrer">
+                                💼 LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="bento-grid">
+                <div class="project-card">
+                    <span class="project-tag">CAPSTONE</span>
+                    <h3 class="project-title">WTA Tennis Analytics Platform</h3>
+                    <p class="project-description">
+                        Collaborating with the WTA to develop innovative player performance metrics beyond traditional statistics, creating marketable categories like "power hitter" and "comeback player" for enhanced fan engagement and sponsorship opportunities. Analyzing multi-year season-by-season WTA match data to derive composite statistical measures.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Power BI</span>
+                        <span class="tech-badge">Statistics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.wtatennis.com/" class="project-link" target="_blank" rel="noopener noreferrer">
+                            🎾 WTA Website
+                        </a>
+                    </div>
+                    <div class="project-media">
+                        <img src="https://photoresources.wtatennis.com/wta/photo/2025/02/27/0f7d3973-358d-47c0-a3f0-7d3f76f26a13/Frame-1-1-2.png" alt="WTA Logo" style="max-width: 250px; margin: 0 auto; display: block;">
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-tag">AI AGENT</span>
+                    <h3 class="project-title">Agentic AI Financial Assistant</h3>
+                    <p class="project-description">
+                        Automated market-open/close stock reports with zero manual input, generating timestamped intraday, weekly, and monthly performance reports. Enabled natural language interaction for portfolio management, allowing users to add/remove stocks and analyze performance through interactive chat.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Groq API</span>
+                        <span class="tech-badge">LLaMA</span>
+                        <span class="tech-badge">yfinance</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/prajwalbang/Finance-AI-Agent" class="project-link" target="_blank" rel="noopener noreferrer">
+                            💻 GitHub
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=76JfomeQZdw" class="project-link" target="_blank" rel="noopener noreferrer">
+                            📹 Demo Video
+                        </a>
+                    </div>
+                    <div class="project-media">
+                        <iframe src="https://www.youtube.com/embed/76JfomeQZdw" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-tag">DATA ENGINEERING</span>
+                    <h3 class="project-title">AI-Driven Supply Chain Analytics</h3>
+                    <p class="project-description">
+                        Built an automated end-to-end data pipeline that ingested Gmail CSVs into a PostgreSQL star schema. Created supply-chain KPIs (OTIF, On-Time %, Fill Rate) and automated recurring monthly reports by city and customer to highlight business trends.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">n8n</span>
+                        <span class="tech-badge">Supabase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/prajwalbang/AI-Driven-Supply-Chain-Analytics-Project" class="project-link" target="_blank" rel="noopener noreferrer">
+                            💻 GitHub
+                        </a>
+                    </div>
+                    <div class="project-media">
+                        <img src="https://private-user-images.githubusercontent.com/76061831/484314828-bc32a191-29a3-4990-8fdc-0d56e6ed2706.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTk2OTE5NzAsIm5iZiI6MTc1OTY5MTY3MCwicGF0aCI6Ii83NjA2MTgzMS80ODQzMTQ4MjgtYmMzMmExOTEtMjlhMy00OTkwLThmZGMtMGQ1NmU2ZWQyNzA2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDA1VDE5MTQzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI0MzczMWNhMDZmMDkxNzA0YzFiZjUwNzZiNDVjMTUyNzg3NjE0YmQ3YzVkMzljYTgyMmYyZjE0MzRkZWM1N2ImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.TBWb_jrI8EeOv6Gby0oMOmAqPJ62qeFbQXgON81MbKI" alt="Supply Chain Analytics Dashboard">
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-tag">DASHBOARD</span>
+                    <h3 class="project-title">Amazon Sales Dashboard</h3>
+                    <p class="project-description">
+                        Developed interactive Power BI dashboard analyzing $24.9M revenue and $10.5M profit from 130+ products and 25K+ orders. Queried 56K+ order records and modeled a star schema with 7+ related tables to support efficient reporting and KPI calculations.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Power BI</span>
+                        <span class="tech-badge">Data Modeling</span>
+                        <span class="tech-badge">DAX</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/prajwalbang/Amazon-Sales-Dashboard-using-PowerBi" class="project-link" target="_blank" rel="noopener noreferrer">
+                            💻 GitHub
+                        </a>
+                        <a href="https://youtu.be/sZ4GkCzGMlQ" class="project-link" target="_blank" rel="noopener noreferrer">
+                            📹 Demo Video
+                        </a>
+                    </div>
+                    <div class="project-media">
+                        <iframe src="https://www.youtube.com/embed/sZ4GkCzGMlQ" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-tag">AUTOMATION</span>
+                    <h3 class="project-title">Cold Email Outreach Automation</h3>
+                    <p class="project-description">
+                        Built sophisticated n8n automation workflows for job applications with LinkedIn scraping, personalized email campaigns, and automated follow-ups at scale. Streamlined the entire outreach process from data collection to personalized messaging.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">n8n</span>
+                        <span class="tech-badge">Web Scraping</span>
+                        <span class="tech-badge">Automation</span>
+                        <span class="tech-badge">LinkedIn</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/prajwalbang" class="project-link" target="_blank" rel="noopener noreferrer">
+                            💻 GitHub
+                        </a>
+                    </div>
+                    <div class="project-media">
+                        <img src="https://raw.githubusercontent.com/prajwalbang/Portfolio-Website/main/Screenshot%202025-09-11%20125606.png" alt="Cold Email Automation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Analysis</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>SQL</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>R</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Visualization</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power BI</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Tableau</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Matplotlib/Seaborn</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>EDA</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Excel/VBA</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Pandas</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Alteryx</span>
+                            <span>82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AI and Automation</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power Automate</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>n8n</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>ETL Pipelines</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AI Tools / Agentic AI</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Prompt Engineering</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>LangChain/Phidata</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Groq/OpenAI APIs</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests">
+        <div class="container">
+            <h2 class="section-title">Beyond the Data</h2>
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <div class="interest-icon">🏎️</div>
+                    <h3 class="interest-title">Formula 1 Enthusiast</h3>
+                    <p class="interest-description">
+                        Obsessed with Formula 1 racing, following every race weekend and analyzing team strategies, driver performances, and technical innovations.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">💪</div>
+                    <h3 class="interest-title">Fitness & Training</h3>
+                    <p class="interest-description">
+                        Love working out and staying active. Always looking for ways to optimize training routines and improve performance.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🎾</div>
+                    <h3 class="interest-title">Sports Analytics</h3>
+                    <p class="interest-description">
+                        Deep interest in sports, combining my love for athletics with data analysis to uncover performance insights and trends.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">🤖</div>
+                    <h3 class="interest-title">Automation & AI</h3>
+                    <p class="interest-description">
+                        Fascinated by building intelligent systems and automating workflows to solve real-world problems. Stay up to date with the latest AI news and tools, constantly experimenting with new technologies driven by curiosity.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">📊</div>
+                    <h3 class="interest-title">Data Visualization</h3>
+                    <p class="interest-description">
+                        Love transforming complex datasets into compelling visual stories that drive decision-making.
+                    </p>
+                </div>
+                <div class="interest-card">
+                    <div class="interest-icon">💼</div>
+                    <h3 class="interest-title">Business & Entrepreneurship</h3>
+                    <p class="interest-description">
+                        Passionate about business strategy and entrepreneurship, always exploring innovative ideas and opportunities to create value.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p class="text-secondary">prajwalbang2020@gmail.com</p>
+                    <p class="text-secondary">bang.p@northeastern.edu</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/prajwal-bang/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;">
+                        <p class="text-secondary">linkedin.com/in/prajwal-bang</p>
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/prajwalbang" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;">
+                        <p class="text-secondary">github.com/prajwalbang</p>
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📄</div>
+                    <h3>Resume</h3>
+                    <a href="https://raw.githubusercontent.com/prajwalbang/Portfolio-Website/main/Prajwal%20Bang%20Resume%200.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none;">
+                        <p class="text-secondary">Download PDF</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Prajwal. Built with passion and data.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const toggleSlider = themeToggle.querySelector('.theme-toggle-slider');
+        
+        // Start with dark theme
+        let isDark = true;
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                toggleSlider.textContent = '🌙';
+                themeToggle.classList.remove('active');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                toggleSlider.textContent = '☀️';
+                themeToggle.classList.add('active');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards and timeline items
+        document.querySelectorAll('.project-card, .timeline-item, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Animate skill bars on scroll
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category').forEach(category => {
+            skillObserver.observe(category);
+        });
+    </script>
+</body>
+</html>
